@@ -100,7 +100,6 @@ export default function IndustriesPage() {
   const governmentRef = useRef(null)
   const governmentMarkerRef = useRef(null) // Special marker for Government
   const navContainerRef = useRef(null)
-  const debugRef = useRef(null)
   const lastScrollPositionRef = useRef(0)
 
   // Update scroll position with smoother tracking and get window dimensions
@@ -171,55 +170,55 @@ export default function IndustriesPage() {
   const headerHeight = isVerySmallScreen ? 70 : isSmallScreen ? 90 : 120
 
   // Add a debug element to the page
-  useEffect(() => {
-    if (!debugRef.current) {
-      const debugElement = document.createElement("div")
-      debugElement.style.position = "fixed"
-      debugElement.style.bottom = "10px"
-      debugElement.style.right = "10px"
-      debugElement.style.backgroundColor = "rgba(0,0,0,0.8)"
-      debugElement.style.color = "white"
-      debugElement.style.padding = "10px"
-      debugElement.style.fontSize = "12px"
-      debugElement.style.zIndex = "9999"
-      debugElement.style.maxWidth = "400px"
-      debugElement.style.maxHeight = "200px"
-      debugElement.style.overflow = "auto"
-      document.body.appendChild(debugElement)
-      debugRef.current = debugElement
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (!debugRef.current) {
+  //     const debugElement = document.createElement("div")
+  //     debugElement.style.position = "fixed"
+  //     debugElement.style.bottom = "10px"
+  //     debugElement.style.right = "10px"
+  //     debugElement.style.backgroundColor = "rgba(0,0,0,0.8)"
+  //     debugElement.style.color = "white"
+  //     debugElement.style.padding = "10px"
+  //     debugElement.style.fontSize = "12px"
+  //     debugElement.style.zIndex = "9999"
+  //     debugElement.style.maxWidth = "400px"
+  //     debugElement.style.maxHeight = "200px"
+  //     debugElement.style.overflow = "auto"
+  //     document.body.appendChild(debugElement)
+  //     debugRef.current = debugElement
+  //   }
+  // }, [])
 
-  // Update debug info
-  useEffect(() => {
-    if (debugRef.current) {
-      debugRef.current.innerHTML = `
-        <div>Scroll: ${scrollPosition}</div>
-        <div>Window Height: ${windowHeight}</div>
-        <div>Current Section: ${currentSection}</div>
-        <div>Next Section: ${nextSection}</div>
-        <div>Active Industry: ${activeIndustry}</div>
-        <div>Manual Navigation: ${manualNavigation}</div>
-        <div>Manually Selected: ${manuallySelectedSection}</div>
-        <div>Scroll Direction: ${scrollDirection}</div>
-        <div>Initialized: ${isInitialized}</div>
-        <div>Navbar Visible: ${navbarVisible}</div>
-        <div>In Transition Zone: ${inTransitionZone}</div>
-      `
-    }
-  }, [
-    scrollPosition,
-    windowHeight,
-    currentSection,
-    nextSection,
-    activeIndustry,
-    manualNavigation,
-    manuallySelectedSection,
-    scrollDirection,
-    isInitialized,
-    navbarVisible,
-    inTransitionZone,
-  ])
+  // // Update debug info
+  // useEffect(() => {
+  //   if (debugRef.current) {
+  //     debugRef.current.innerHTML = `
+  //       <div>Scroll: ${scrollPosition}</div>
+  //       <div>Window Height: ${windowHeight}</div>
+  //       <div>Current Section: ${currentSection}</div>
+  //       <div>Next Section: ${nextSection}</div>
+  //       <div>Active Industry: ${activeIndustry}</div>
+  //       <div>Manual Navigation: ${manualNavigation}</div>
+  //       <div>Manually Selected: ${manuallySelectedSection}</div>
+  //       <div>Scroll Direction: ${scrollDirection}</div>
+  //       <div>Initialized: ${isInitialized}</div>
+  //       <div>Navbar Visible: ${navbarVisible}</div>
+  //       <div>In Transition Zone: ${inTransitionZone}</div>
+  //     `
+  //   }
+  // }, [
+  //   scrollPosition,
+  //   windowHeight,
+  //   currentSection,
+  //   nextSection,
+  //   activeIndustry,
+  //   manualNavigation,
+  //   manuallySelectedSection,
+  //   scrollDirection,
+  //   isInitialized,
+  //   navbarVisible,
+  //   inTransitionZone,
+  // ])
 
   // NEW APPROACH: Detect transition zones between sections
   useEffect(() => {
@@ -271,9 +270,9 @@ export default function IndustriesPage() {
       nextSectionValue = "government"
 
       // Add debug info
-      if (debugRef.current) {
-        debugRef.current.innerHTML += `<div>In PS to Gov transition zone: ${scrollPosition}</div>`
-      }
+      // if (debugRef.current) {
+      //   debugRef.current.innerHTML += `<div>In PS to Gov transition zone: ${scrollPosition}</div>`
+      // }
     } else {
       // Determine current section based on scroll position (not in transition)
       if (scrollPosition < heroThreshold) {
@@ -310,9 +309,9 @@ export default function IndustriesPage() {
       const canChangeSection = timeSinceLastChange > 100 // Reduced to 100ms for more responsive updates
 
       if (canChangeSection) {
-        if (debugRef.current) {
-          debugRef.current.innerHTML += `<div>Changing section from ${currentSection} to ${newSection}</div>`
-        }
+        // if (debugRef.current) {
+        //   debugRef.current.innerHTML += `<div>Changing section from ${currentSection} to ${newSection}</div>`
+        // }
 
         // Update the section and set the last change time
         setCurrentSection(newSection)
@@ -348,9 +347,9 @@ export default function IndustriesPage() {
 
   // Start transition between sections
   const startTransition = (fromSection, toSection) => {
-    if (debugRef.current) {
-      debugRef.current.innerHTML += `<div>Starting transition from ${fromSection} to ${toSection}</div>`
-    }
+    // if (debugRef.current) {
+    //   debugRef.current.innerHTML += `<div>Starting transition from ${fromSection} to ${toSection}</div>`
+    // }
 
     // Set transition state
     setIsTransitioning(true)
@@ -456,9 +455,9 @@ export default function IndustriesPage() {
       // Add a much longer delay before completing the transition
       setTimeout(() => {
         // Now proceed with the normal transition completion
-        if (debugRef.current) {
-          debugRef.current.innerHTML += `<div>Completing delayed transition to Government</div>`
-        }
+        // if (debugRef.current) {
+        //   debugRef.current.innerHTML += `<div>Completing delayed transition to Government</div>`
+        // }
 
         // Get elements
         const header = document.querySelector("header")
@@ -550,9 +549,9 @@ export default function IndustriesPage() {
       return
     }
 
-    if (debugRef.current) {
-      debugRef.current.innerHTML += `<div>Completing transition to ${section}</div>`
-    }
+    // if (debugRef.current) {
+    //   debugRef.current.innerHTML += `<div>Completing transition to ${section}</div>`
+    // }
 
     // Get elements
     const header = document.querySelector("header")
@@ -864,9 +863,9 @@ export default function IndustriesPage() {
       // Add event listener with a more direct approach
       const industryId = industry.id
       button.onclick = () => {
-        if (debugRef.current) {
-          debugRef.current.innerHTML += `<div>Button clicked: ${industryId}</div>`
-        }
+        // if (debugRef.current) {
+        //   debugRef.current.innerHTML += `<div>Button clicked: ${industryId}</div>`
+        // }
         handleIndustryClick(industryId)
       }
 
@@ -1131,9 +1130,9 @@ export default function IndustriesPage() {
       }
 
       // Add debug info
-      if (debugRef.current) {
-        debugRef.current.innerHTML += `<div>Scrolling to ${industryId} at position ${scrollPosition}</div>`
-      }
+      // if (debugRef.current) {
+      //   debugRef.current.innerHTML += `<div>Scrolling to ${industryId} at position ${scrollPosition}</div>`
+      // }
 
       // Scroll to the calculated position
       window.scrollTo({
@@ -1149,9 +1148,9 @@ export default function IndustriesPage() {
         setManualNavigation(false)
 
         // Add debug info
-        if (debugRef.current) {
-          debugRef.current.innerHTML += `<div>Manual navigation disabled</div>`
-        }
+        // if (debugRef.current) {
+        //   debugRef.current.innerHTML += `<div>Manual navigation disabled</div>`
+        // }
 
         // Keep the manually selected section active for a bit longer
         setTimeout(() => {
@@ -1241,9 +1240,9 @@ export default function IndustriesPage() {
       setActiveIndustry("none")
 
       // Add debug info
-      if (debugRef.current) {
-        debugRef.current.innerHTML += `<div>Active industry reset to none because section is hero</div>`
-      }
+      // if (debugRef.current) {
+      //   debugRef.current.innerHTML += `<div>Active industry reset to none because section is hero</div>`
+      // }
     }
   }, [currentSection, activeIndustry])
 
@@ -1408,6 +1407,7 @@ export default function IndustriesPage() {
       <header className="fixed top-0 left-0 w-full z-[100] px-6 md:px-8 pt-3 md:pt-6 transition-colors duration-300">
         <div className="max-w-[1800px] mx-auto flex justify-between items-start">
           {/* Logo with color transition */}
+          <Link href="/">
           <div
             className="relative mt-2 md:mt-4"
             style={{
@@ -1444,22 +1444,16 @@ export default function IndustriesPage() {
               />
             </div>
           </div>
+          </Link>
 
           {/* Navigation Links with dynamic color */}
           <nav className="hidden md:flex items-center space-x-8 lg:space-x-16 py-2">
             <Link
-              href="/"
+              href="/about"
               className="transition-all duration-300 hover:opacity-80 text-sm lg:text-base"
               style={{ color: textColor }}
             >
               About
-            </Link>
-            <Link
-              href="#prep"
-              className="transition-all duration-300 hover:opacity-80 text-sm lg:text-base"
-              style={{ color: textColor }}
-            >
-              PREP
             </Link>
             <Link
               href="/industries"
@@ -1476,14 +1470,14 @@ export default function IndustriesPage() {
               Products
             </Link>
             <Link
-              href="#careers"
+              href="/careers"
               className="transition-all duration-300 hover:opacity-80 text-sm lg:text-base"
               style={{ color: textColor }}
             >
               Careers
             </Link>
             <Link
-              href="#contact"
+              href="/contact"
               className="ml-2 lg:ml-4 inline-flex items-center px-4 py-1.5 lg:px-6 lg:py-2 border rounded-full transition-all duration-300 text-sm lg:text-base"
               style={{
                 color: textColor,
@@ -1601,6 +1595,7 @@ export default function IndustriesPage() {
 
                   {/* Let's Connect Button - Styled to match the image */}
                   <button className="bg-red-600 text-white rounded-full px-8 py-4 flex items-center hover:bg-red-700 transition-colors">
+                    href
                     Let's Connect <ArrowRight className="ml-2 h-5 w-5" />
                   </button>
                 </div>

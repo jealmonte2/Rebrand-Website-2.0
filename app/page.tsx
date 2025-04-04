@@ -54,7 +54,6 @@ export default function Home() {
 
   const statsRef = useRef<HTMLDivElement>(null)
   const partnersRef = useRef<HTMLDivElement>(null)
-  const debugRef = useRef<HTMLDivElement>(null)
 
   // Update scroll position with smoother tracking and get window dimensions
   useEffect(() => {
@@ -226,7 +225,7 @@ export default function Home() {
         },
         body: JSON.stringify({
           ...formData,
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Replace with your actual access key
+          access_key: "2b07d43f-7835-402f-9569-7397e85be4ff", // Replace with your actual access key
         }),
       })
 
@@ -248,36 +247,36 @@ export default function Home() {
   }
 
   // Debug info - will be hidden in production
-  useEffect(() => {
-    if (debugRef.current) {
-      debugRef.current.textContent = `
-        Scroll: ${scrollPosition}
-        Window Height: ${windowHeight}
-        First Transition: ${firstColorTransitionPoint} (Progress: ${firstColorTransitionProgress.toFixed(2)})
-        Second Transition: ${secondColorTransitionPoint} (Progress: ${secondColorTransitionProgress.toFixed(2)})
-        Third Transition: ${thirdColorTransitionPoint} (Progress: ${thirdColorTransitionProgress.toFixed(2)})
-        Fourth Transition: ${fourthColorTransitionPoint} (Progress: ${fourthColorTransitionProgress.toFixed(2)})
-        Text Color Value: ${textColorValue}
-        In Consulting Section: ${isInConsultingSection}
-        White Logo Opacity: ${whiteLogoOpacity}
-        Black Logo Opacity: ${blackLogoOpacity}
-      `
+  // useEffect(() => {
+  //   if (debugRef.current) {
+  //     debugRef.current.textContent = `
+  //       Scroll: ${scrollPosition}
+  //       Window Height: ${windowHeight}
+  //       First Transition: ${firstColorTransitionPoint} (Progress: ${firstColorTransitionProgress.toFixed(2)})
+  //       Second Transition: ${secondColorTransitionPoint} (Progress: ${secondColorTransitionProgress.toFixed(2)})
+  //       Third Transition: ${thirdColorTransitionPoint} (Progress: ${thirdColorTransitionProgress.toFixed(2)})
+  //       Fourth Transition: ${fourthColorTransitionPoint} (Progress: ${fourthColorTransitionProgress.toFixed(2)})
+  //       Text Color Value: ${textColorValue}
+  //       In Consulting Section: ${isInConsultingSection}
+  //       White Logo Opacity: ${whiteLogoOpacity}
+  //       Black Logo Opacity: ${blackLogoOpacity}
+  //     `
 
-      // Make debug visible during development
-      debugRef.current.style.display = "block"
-    }
-  }, [
-    scrollPosition,
-    windowHeight,
-    firstColorTransitionProgress,
-    secondColorTransitionProgress,
-    thirdColorTransitionProgress,
-    fourthColorTransitionProgress,
-    textColorValue,
-    isInConsultingSection,
-    whiteLogoOpacity,
-    blackLogoOpacity,
-  ])
+  //     // Make debug visible during development
+  //     debugRef.current.style.display = "block"
+  //   }
+  // }, [
+  //   scrollPosition,
+  //   windowHeight,
+  //   firstColorTransitionProgress,
+  //   secondColorTransitionProgress,
+  //   thirdColorTransitionProgress,
+  //   fourthColorTransitionProgress,
+  //   textColorValue,
+  //   isInConsultingSection,
+  //   whiteLogoOpacity,
+  //   blackLogoOpacity,
+  // ])
 
   // Function to render partner logo with proper rounded corners
   const renderPartnerLogo = (partner, key) => {
@@ -403,7 +402,7 @@ export default function Home() {
   return (
     <div className="relative font-sans">
       {/* Debug info - hidden in production */}
-      <div
+      {/* <div
         ref={debugRef}
         style={{
           position: "fixed",
@@ -416,7 +415,7 @@ export default function Home() {
           zIndex: 9999,
           display: "none", // Set to 'block' for debugging
         }}
-      ></div>
+      ></div> */}
 
       {/* Fixed Header with color transitions */}
       <header className="fixed top-0 left-0 w-full z-[100] px-6 md:px-8 pt-3 md:pt-6">
@@ -462,18 +461,11 @@ export default function Home() {
           {/* Navigation Links with dynamic color */}
           <nav className="hidden md:flex items-center space-x-8 lg:space-x-16 py-2">
             <Link
-              href="#about"
+              href="/about"
               className="transition-colors duration-300 hover:opacity-80 text-sm lg:text-base"
               style={{ color: textColor }}
             >
               About
-            </Link>
-            <Link
-              href="#prep"
-              className="transition-colors duration-300 hover:opacity-80 text-sm lg:text-base"
-              style={{ color: textColor }}
-            >
-              PREP
             </Link>
             <Link
               href="/industries"
@@ -490,14 +482,14 @@ export default function Home() {
               Products
             </Link>
             <Link
-              href="#careers"
+              href="/careers"
               className="transition-colors duration-300 hover:opacity-80 text-sm lg:text-base"
               style={{ color: textColor }}
             >
               Careers
             </Link>
             <Link
-              href="#contact"
+              href="/contact"
               className="ml-2 lg:ml-4 inline-flex items-center px-4 py-1.5 lg:px-6 lg:py-2 border rounded-full transition-all duration-300 text-sm lg:text-base"
               style={{
                 color: textColor,
@@ -566,7 +558,7 @@ export default function Home() {
             {/* Bottom Action Button */}
             <div className="mb-16">
               <Link
-                href="#about"
+                href="/contact"
                 className="inline-flex items-center px-8 py-4 border border-white rounded-full text-white text-lg hover:bg-white hover:text-black transition"
               >
                 Let's Connect <span className="ml-2">→</span>
@@ -778,7 +770,7 @@ export default function Home() {
                 className={`absolute ${isVerySmallScreen ? "bottom-4" : "bottom-8"} left-6 md:left-8 lg:left-12 xl:left-16`}
               >
                 <Link
-                  href="#connect"
+                  href="/contact"
                   className={`inline-flex items-center ${
                     isVerySmallScreen
                       ? "px-4 py-1.5 text-xs"
@@ -895,7 +887,7 @@ export default function Home() {
             {/* All Services Button - Updated to match the provided image */}
             <div className="mt-12 md:mt-16 lg:mt-20">
               <Link
-                href="#services"
+                href="/products"
                 className="inline-flex items-center justify-center bg-transparent border border-white rounded-full px-8 py-4 w-48 md:w-56 text-white hover:bg-white/20 transition-colors duration-300"
               >
                 All Services <span className="ml-2">→</span>
@@ -951,7 +943,7 @@ export default function Home() {
 
                 {/* Schedule A Call Button - Using the provided image */}
                 <div className="mt-2 mb-6">
-                  <Link href="#schedule" className="inline-block">
+                  <Link href="/contact" className="inline-block">
                     <Image
                       src="/images/schedule-call-button.png"
                       alt="Schedule A Call"
@@ -1108,9 +1100,16 @@ export default function Home() {
                 0% {
                   transform: translateX(0);
                 }
-                10% {
-                  transform: translateX(-${partners.length * 360 * 2}px);
+                100% {
+                  transform: translateX(-100%);
                 }
+              }
+
+              .scrolling-container {
+                display: flex;
+                white-space: nowrap;
+                overflow: hidden;
+                animation: marquee 30s linear infinite;
               }
             `}</style>
           </div>
@@ -1119,6 +1118,7 @@ export default function Home() {
 
       {/* Consult Section with Parallax Effect */}
       <section
+      id="contact"
         className="fixed top-0 left-0 w-full h-screen bg-white overflow-hidden"
         style={{
           transform: consultSectionTransform,

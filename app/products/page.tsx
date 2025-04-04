@@ -396,6 +396,7 @@ export default function ProductsPage() {
       <header className="fixed top-0 left-0 w-full z-[100] px-6 md:px-8 pt-3 md:pt-6">
         <div className="max-w-[1800px] mx-auto flex justify-between items-start">
           {/* Logo with color transition */}
+          <Link href="/">
           <div
             className="relative mt-2 md:mt-4"
             style={{
@@ -432,22 +433,16 @@ export default function ProductsPage() {
               />
             </div>
           </div>
+          </Link>
 
           {/* Navigation Links with dynamic color */}
           <nav className="hidden md:flex items-center space-x-8 lg:space-x-16 py-2">
             <Link
-              href="/"
+              href="/about"
               className="transition-colors duration-300 hover:opacity-80 text-sm lg:text-base"
               style={{ color: textColor }}
             >
               About
-            </Link>
-            <Link
-              href="#prep"
-              className="transition-colors duration-300 hover:opacity-80 text-sm lg:text-base"
-              style={{ color: textColor }}
-            >
-              PREP
             </Link>
             <Link
               href="/industries"
@@ -464,14 +459,14 @@ export default function ProductsPage() {
               Products
             </button>
             <Link
-              href="#careers"
+              href="/careers"
               className="transition-colors duration-300 hover:opacity-80 text-sm lg:text-base"
               style={{ color: textColor }}
             >
               Careers
             </Link>
             <Link
-              href="#contact"
+              href="/contact"
               className="ml-2 lg:ml-4 inline-flex items-center px-4 py-1.5 lg:px-6 lg:py-2 border rounded-full transition-all duration-300 text-sm lg:text-base"
               style={{
                 color: textColor,
